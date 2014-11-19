@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/nenadalm/hours-counter.png?branch=master)](http://travis-ci.org/nenadalm/hours-counter)
+
 Hours-counter
 =============
 

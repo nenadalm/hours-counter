@@ -54,6 +54,7 @@ Installation
 ============
 ```
 $ git clone git@github.com:nenadalm/hours-counter.git /opt/hours-counter
+$ cd /opt/hours-counter
 $ composer install --no-dev
 $ ln -s /opt/hours-counter/bin/run.php /usr/local/bin/hours-counter
 ```

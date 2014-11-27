@@ -18,6 +18,7 @@ class Parser extends AbstractParser
     const T_TIME_INTERVAL = 3;
     const T_DESCRIPTION = 4;
     const T_END_OF_STATEMENT = 5;
+    const T_END_OF_LINE = 6;
 
     protected function parseInternal()
     {

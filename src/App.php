@@ -26,18 +26,20 @@ class App
                 'T_DESCRIPTION',
             ], function ($value) {
                 if (preg_match('/^[a-z]+:$/', $value)) {
-                    return [1, $value];
+                    return [Parser::T_DAY, $value];
                 } elseif (preg_match('/^=+$/', $value)) {
-                    return [2, $value];
+                    return [Parser::T_END_OF_BLOCK, $value];
                 } elseif (preg_match('/[0-9]{1,2}:[0-9]{1,2} - [0-9]{1,2}:[0-9]{1,2}/', $value)) {
-                    return [3, $value];
+                    return [Parser::T_TIME_INTERVAL, $value];
                 } elseif (preg_match('(\* .*)', $value)) {
-                    return [4, $value];
+                    return [Parser::T_DESCRIPTION, $value];
                 } elseif (preg_match('/;/', $value)) {
-                    return [5, $value];
+                    return [Parser::T_END_OF_STATEMENT, $value];
+                } elseif ($value === "\n") {
+                    return [Parser::T_END_OF_LINE, $value];
                 }
 
-                return [0, $value];
+                throw new \Exception(sprintf('Unrecognized value "%s" found.', $value));
             });
 
         $parser = new Parser($lexer);

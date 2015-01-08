@@ -10,6 +10,24 @@ use PHPUnit_Framework_TestCase;
 class AppTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @expectedException Exception
+     *
+     * @dataProvider invalidInputProvider
+     */
+    public function testInvalidInput($invalidFixture)
+    {
+        $app = new \NenadalM\HoursCounter\App();
+        $app->run($this->fileContent($invalidFixture));
+    }
+
+    public function invalidInputProvider()
+    {
+        return [
+            ['missingSemicolon']
+        ];
+    }
+
+    /**
      * @dataProvider testProvider
      */
     public function testOutput($fixture, $expected)

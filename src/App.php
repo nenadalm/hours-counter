@@ -29,7 +29,7 @@ class App
                     return [Parser::T_DAY, $value];
                 } elseif (preg_match('/^=+$/', $value)) {
                     return [Parser::T_END_OF_BLOCK, $value];
-                } elseif (preg_match('/[0-9]{1,2}:[0-9]{1,2} - [0-9]{1,2}:[0-9]{1,2}/', $value)) {
+                } elseif (preg_match('/^\s*[0-9]{1,2}:[0-9]{1,2} - [0-9]{1,2}:[0-9]{1,2}\s*$/', $value)) {
                     return [Parser::T_TIME_INTERVAL, $value];
                 } elseif (preg_match('(\* .*)', $value)) {
                     return [Parser::T_DESCRIPTION, $value];

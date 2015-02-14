@@ -5,5 +5,5 @@ before_script:
 
 script:
     - vendor/bin/phpunit
-    - vendor/bin/phpmd src/ text codesize,controversial,design,naming,unusedcode
+    - vendor/bin/phpmd src/ text phpmd.xml
 

@@ -3,4 +3,7 @@ language: php
 before_script:
     composer install
 
-script: ./vendor/bin/phpunit
+script:
+    - vendor/bin/phpunit
+    - vendor/bin/phpmd src/ text codesize,controversial,design,naming,unusedcode
+

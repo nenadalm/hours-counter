@@ -30,7 +30,7 @@ class Time
     {
         $matches = [];
         preg_match('/([0-9]{1,2}:[0-9]{1,2}) (-) ([0-9]{1,2}:[0-9]{1,2})/', $timeIntervalString, $matches);
-        list(, $lOperand, $operator, $rOperand) = $matches;
+        list(, $lOperand,, $rOperand) = $matches;
 
         return static::createFromTimeString($rOperand)->sub(static::createFromTimeString($lOperand));
     }

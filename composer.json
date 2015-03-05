@@ -16,6 +16,11 @@
             "NenadalM\\HoursCounter\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "NenadalM\\HoursCounter\\Tests": "tests/"
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

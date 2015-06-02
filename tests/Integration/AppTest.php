@@ -23,7 +23,7 @@ class AppTest extends PHPUnit_Framework_TestCase
     public function invalidInputProvider()
     {
         return [
-            ['missingSemicolon']
+            ['missingSemicolon'],
         ];
     }
 
@@ -40,7 +40,7 @@ class AppTest extends PHPUnit_Framework_TestCase
     public function testProvider()
     {
         return [
-            ['fixture', 'fixtureResult']
+            ['fixture', 'fixtureResult'],
         ];
     }
 

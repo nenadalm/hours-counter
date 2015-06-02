@@ -1,4 +1,5 @@
 <?php
+
 namespace NenadalM\HoursCounter;
 
 class Time
@@ -30,7 +31,7 @@ class Time
     {
         $matches = [];
         preg_match('/([0-9]{1,2}:[0-9]{1,2}) (-) ([0-9]{1,2}:[0-9]{1,2})/', $timeIntervalString, $matches);
-        list(, $lOperand,, $rOperand) = $matches;
+        list(, $lOperand, , $rOperand) = $matches;
 
         return static::createFromTimeString($rOperand)->sub(static::createFromTimeString($lOperand));
     }
@@ -46,7 +47,7 @@ class Time
         preg_match('/([0-9]{1,2}):([0-9]{1,2})/', $timeString, $matches);
         list(, $hours, $minutes) = $matches;
 
-        return new Time($hours, $minutes);
+        return new self($hours, $minutes);
     }
 
     /**
@@ -60,7 +61,7 @@ class Time
         $minutes = $this->getMinutes() + $time->getMinutes();
         $restOfMinutes = $minutes % static::HOUR_TO_MINUTES;
 
-        return new Time($hours + ($minutes - $restOfMinutes) / static::HOUR_TO_MINUTES, $restOfMinutes);
+        return new self($hours + ($minutes - $restOfMinutes) / static::HOUR_TO_MINUTES, $restOfMinutes);
     }
 
     /**
@@ -77,7 +78,7 @@ class Time
             $hours--;
         }
 
-        return new Time($hours, $minutes);
+        return new self($hours, $minutes);
     }
 
     public function isZero()

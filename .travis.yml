@@ -6,4 +6,7 @@ before_script:
 script:
     - vendor/bin/phpunit
     - vendor/bin/phpmd src/,tests/ text phpmd.xml
+    - vendor/bin/php-cs-fixer fix src/ --diff
+    - vendor/bin/php-cs-fixer fix tests/ --diff
+    - vendor/bin/php-cs-fixer fix bin/ --diff
 

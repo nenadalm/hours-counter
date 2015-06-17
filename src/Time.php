@@ -75,7 +75,7 @@ class Time
         $minutes = $this->getMinutes() - $time->getMinutes();
         if ($minutes < 0) {
             $minutes = static::HOUR_TO_MINUTES + $minutes;
-            $hours--;
+            --$hours;
         }
 
         return new self($hours, $minutes);

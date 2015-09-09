@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ef84693acb8b013e4b7e1fff47711d5b",
+    "hash": "a158e3b91cb7c3970131fbfd5718b444",
     "packages": [
         {
             "name": "jms/parser-lib",
@@ -40,6 +40,50 @@
             ],
             "description": "A library for easily creating recursive-descent parsers.",
             "time": "2012-11-18 18:08:43"
+        },
+        {
+            "name": "nikic/phlexy",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/Phlexy.git",
+                "reference": "8aba8cb05771bcc56c58f9699e0abd54ca128182"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/Phlexy/zipball/8aba8cb05771bcc56c58f9699e0abd54ca128182",
+                "reference": "8aba8cb05771bcc56c58f9699e0abd54ca128182",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Phlexy": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "Lexing experiments in PHP",
+            "keywords": [
+                "lexer",
+                "php"
+            ],
+            "time": "2013-03-13 16:20:49"
         },
         {
             "name": "phpoption/phpoption",

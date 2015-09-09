@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "php": ">=5.4",
-        "jms/parser-lib": "~1.0"
+        "jms/parser-lib": "~1.0",
+        "nikic/phlexy": "~0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.3",

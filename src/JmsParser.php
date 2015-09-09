@@ -6,12 +6,7 @@ use Exception;
 use JMS\Parser\AbstractParser;
 use JMS\Parser\SimpleLexer;
 
-/**
- * @property SimpleLexer $lexer
- *
- * @author Miloslav Nenadal <miloslav.nenadal@imatic.cz>
- */
-class Parser extends AbstractParser implements ParserInterface
+class JmsParser extends AbstractParser implements ParserInterface
 {
     public function __construct()
     {

@@ -2,7 +2,7 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
-if (count($argv) < 2) {
+if ($argc < 2) {
     throw new \InvalidArgumentException('You have to pass file as an argument.');
 }
 

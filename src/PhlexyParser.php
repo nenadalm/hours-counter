@@ -15,12 +15,12 @@ class PhlexyParser implements ParserInterface
     {
         $factory = new UsingPregReplace(new LexerDataGenerator());
         $lexer = $factory->createLexer([
-            '[a-z]+:' => ParserInterface::T_DAY,
-            '=+' => ParserInterface::T_END_OF_BLOCK,
-            '(<? *)[0-9]{1,2}:[0-9]{1,2} - [0-9]{1,2}:[0-9]{1,2}(?=[;\n])' => ParserInterface::T_TIME_INTERVAL,
-            '(\* [^\n]*)' => ParserInterface::T_DESCRIPTION,
-            ';' => ParserInterface::T_END_OF_STATEMENT,
-             "\n" => ParserInterface::T_END_OF_LINE,
+            ParserInterface::REGEXP_DAY => ParserInterface::T_DAY,
+            ParserInterface::REGEXP_END_OF_BLOCK => ParserInterface::T_END_OF_BLOCK,
+            ParserInterface::REGEXP_TIME_INTERVAL => ParserInterface::T_TIME_INTERVAL,
+            ParserInterface::REGEXP_DESCRIPTION => ParserInterface::T_DESCRIPTION,
+            ParserInterface::REGEXP_END_OF_STATEMENT => ParserInterface::T_END_OF_STATEMENT,
+            ParserInterface::REGEXP_END_OF_LINE => ParserInterface::T_END_OF_LINE,
         ]);
 
         $this->lexer = $lexer;

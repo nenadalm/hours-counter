@@ -24,17 +24,17 @@ class JmsParser extends AbstractParser implements ParserInterface
             'T_TIME_INTERVAL',
             'T_DESCRIPTION',
         ], function ($value) {
-            if (preg_match('/^[a-z]+:$/', $value)) {
+            if (preg_match($this->lineRegexp(ParserInterface::REGEXP_DAY), $value)) {
                 return [ParserInterface::T_DAY, $value];
-            } elseif (preg_match('/^=+$/', $value)) {
+            } elseif (preg_match($this->lineRegexp(ParserInterface::REGEXP_END_OF_BLOCK), $value)) {
                 return [ParserInterface::T_END_OF_BLOCK, $value];
             } elseif (preg_match('/^\s*[0-9]{1,2}:[0-9]{1,2} - [0-9]{1,2}:[0-9]{1,2}\s*$/', $value)) {
                 return [ParserInterface::T_TIME_INTERVAL, $value];
-            } elseif (preg_match('(\* .*)', $value)) {
+            } elseif (preg_match($this->lineRegexp(ParserInterface::REGEXP_DESCRIPTION), $value)) {
                 return [ParserInterface::T_DESCRIPTION, $value];
-            } elseif (preg_match('/;/', $value)) {
+            } elseif (preg_match($this->regexp(ParserInterface::REGEXP_END_OF_STATEMENT), $value)) {
                 return [ParserInterface::T_END_OF_STATEMENT, $value];
-            } elseif ($value === "\n") {
+            } elseif ($value === ParserInterface::REGEXP_END_OF_LINE) {
                 return [ParserInterface::T_END_OF_LINE, $value];
             }
 
@@ -42,6 +42,16 @@ class JmsParser extends AbstractParser implements ParserInterface
         });
 
         parent::__construct($lexer);
+    }
+
+    private function lineRegexp($regexpPart)
+    {
+        return $this->regexp(sprintf('^%s$', $regexpPart));
+    }
+
+    private function regexp($regexpPart)
+    {
+        return sprintf('/%s/', $regexpPart);
     }
 
     protected function parseInternal()

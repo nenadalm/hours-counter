@@ -33,6 +33,7 @@ class PhlexyParser implements ParserInterface
         array_unshift($tokens, null);
         $buffer = [];
         $chunks = [];
+        $totalTimeSum = new Time(0, 0);
         $lastTimeSum = new Time(0, 0);
         $totalBlockTimeSum = new Time(0, 0);
         for ($i = 0; $i < count($tokens); ++$i) {
@@ -55,6 +56,7 @@ class PhlexyParser implements ParserInterface
             if ($current[0] === ParserInterface::T_TIME_INTERVAL && $next[0] !== ParserInterface::T_END_OF_STATEMENT) {
                 array_unshift($buffer, sprintf("%s\n", $lastTimeSum));
                 $totalBlockTimeSum = $totalBlockTimeSum->add($lastTimeSum);
+                $totalTimeSum = $totalTimeSum->add($lastTimeSum);
                 $lastTimeSum = new Time(0, 0);
                 $chunks = array_merge($chunks, $buffer);
                 $buffer = [];
@@ -63,7 +65,7 @@ class PhlexyParser implements ParserInterface
             $buffer[] = $next[2];
         };
 
-        $buffer[] = "\n#".$totalBlockTimeSum."\n";
+        $buffer[] = "\n#".$totalBlockTimeSum."\n\n### Total hours: ".$totalTimeSum."\n";
 
         return implode('', array_merge($chunks, $buffer));
     }

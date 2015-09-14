@@ -58,6 +58,7 @@ class JmsParser extends AbstractParser implements ParserInterface
     {
         $buffer = [];
         $chunks = [];
+        $totalTimeSum = new Time(0, 0);
         $lastTimeSum = new Time(0, 0);
         $totalBlockTimeSum = new Time(0, 0);
         do {
@@ -77,6 +78,7 @@ class JmsParser extends AbstractParser implements ParserInterface
             if ($this->lexer->token[2] === static::T_TIME_INTERVAL && !$this->lexer->isNext(static::T_END_OF_STATEMENT)) {
                 array_unshift($buffer, sprintf("\n%s", $lastTimeSum));
                 $totalBlockTimeSum = $totalBlockTimeSum->add($lastTimeSum);
+                $totalTimeSum = $totalTimeSum->add($lastTimeSum);
                 $lastTimeSum = new Time(0, 0);
                 $chunks = array_merge($chunks, $buffer);
                 $buffer = [];
@@ -85,7 +87,7 @@ class JmsParser extends AbstractParser implements ParserInterface
             $buffer[] = $this->lexer->next[0];
         } while ($this->lexer->moveNext());
 
-        $buffer[] = "\n#".$totalBlockTimeSum."\n";
+        $buffer[] = "\n#".$totalBlockTimeSum."\n\n### Total hours: ".$totalTimeSum."\n";
 
         return implode('', array_merge($chunks, $buffer));
     }

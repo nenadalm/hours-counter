@@ -2,6 +2,7 @@
 
 namespace NenadalM\HoursCounter\Tests\Integration;
 
+use NenadalM\HoursCounter\App;
 use PHPUnit_Framework_TestCase;
 
 /**
@@ -10,13 +11,13 @@ use PHPUnit_Framework_TestCase;
 class AppTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      *
      * @dataProvider invalidInputProvider
      */
     public function testInvalidInput($invalidFixture)
     {
-        $app = new \NenadalM\HoursCounter\App();
+        $app = new App();
         $app->run($this->fileContent($invalidFixture));
     }
 
@@ -32,7 +33,7 @@ class AppTest extends PHPUnit_Framework_TestCase
      */
     public function testOutput($fixture, $expected)
     {
-        $app = new \NenadalM\HoursCounter\App();
+        $app = new App();
         $result = $app->run($this->fileContent($fixture));
         $this->assertEquals($this->fileContent($expected), $result);
     }

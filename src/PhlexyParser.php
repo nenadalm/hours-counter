@@ -63,7 +63,7 @@ class PhlexyParser implements ParserInterface
             }
 
             $buffer[] = $next[2];
-        };
+        }
 
         $buffer[] = "\n#".$totalBlockTimeSum."\n\n### Total hours: ".$totalTimeSum."\n";
 

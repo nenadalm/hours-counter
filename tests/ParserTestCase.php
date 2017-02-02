@@ -16,7 +16,7 @@ abstract class ParserTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      *
      * @dataProvider invalidInputProvider
      */

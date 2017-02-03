@@ -1,4 +1,14 @@
+sudo: false
+
 language: php
+
+php:
+    - 7.0
+
+addons:
+    apt:
+        packages:
+            - graphviz
 
 before_script:
     composer install
@@ -9,4 +19,8 @@ script:
     - vendor/bin/php-cs-fixer fix src/ --diff
     - vendor/bin/php-cs-fixer fix tests/ --diff
     - vendor/bin/php-cs-fixer fix bin/ --diff
+    - vendor/bin/phpda analyze phpda.yml
+
+after_success:
+    - bin/deploy-analysis
 

@@ -1,0 +1,5 @@
+mode: usage
+target: resources/public/phpda.svg
+formatter: PhpDA\Writer\Strategy\Svg
+source: 'src/'
+

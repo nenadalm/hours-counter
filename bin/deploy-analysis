@@ -2,7 +2,7 @@
 
 set -eu
 
-SOURCE_BRANCH=develop
+SOURCE_BRANCH=master
 TARGET_BRANCH=gh-pages-master
 SUBTREE_BRANCH=gh-pages
 REPO=git@github.com:nenadalm/hours-counter.git

@@ -1,4 +1,5 @@
 <?php
+
 namespace NenadalM\HoursCounter;
 
 use Hoa\Compiler\Llk\Llk;
@@ -9,7 +10,7 @@ class HoaParser implements ParserInterface
 {
     public function parse($input)
     {
-        $compiler = Llk::load(new Read(__DIR__ . '/../resources/grammar/grammar.pp'));
+        $compiler = Llk::load(new Read(__DIR__.'/../resources/grammar/grammar.pp'));
         $compiler->parse($input);
         $trace = $compiler->getTrace();
 

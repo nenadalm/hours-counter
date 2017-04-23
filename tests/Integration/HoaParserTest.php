@@ -1,4 +1,5 @@
 <?php
+
 namespace NenadalM\HoursCounter\Tests\Integration;
 
 use NenadalM\HoursCounter\HoaParser;

@@ -80,7 +80,7 @@ $ git clone git@github.com:nenadalm/hours-counter.git
 $ cd ./hours-counter
 ```
 
-## GraalVM (recommended)
+### GraalVM (recommended)
 
 This option is recommended as the program is fastest.
 
@@ -94,7 +94,7 @@ $ (cd target && PATH="/opt/graalvm-ce-1.0.0-rc3/bin:$PATH" native-image -H:+Repo
 $ cp ./target/hours-counter-0.0.0-standalone /usr/local/bin/hours-counter
 ```
 
-## NodeJS
+### NodeJS
 
 ```
 $ lein cljsbuild once min
@@ -102,7 +102,7 @@ $ cp target/app.js /usr/local/bin/hours-counter
 $ chmod +x /usr/local/bin/hours-counter
 ```
 
-## JVM
+### JVM
 
 ```
 $ lein uberjar

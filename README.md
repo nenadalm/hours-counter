@@ -1,12 +1,11 @@
 [![Build Status](https://api.travis-ci.org/nenadalm/hours-counter.png?branch=master)](http://travis-ci.org/nenadalm/hours-counter)
 
-Hours-counter
-=============
+# Hours-counter
 
 Simple program to calculate your hours
 
-Format of logging your hours
------------------------------
+## Format of logging your hours
+
 ```
 we:
 ==========
@@ -32,8 +31,8 @@ mo:
 * one more note
 ```
 
-Calculate hours per task/day:
------------------------------
+## Calculate hours per task/day:
+
 ```$ hours-counter hours.txt```
 
 ```
@@ -74,17 +73,49 @@ mo:
 ### Total hours: 11:07 (11.116667)
 ```
 
-Installation
-============
+## Installation
+
 ```
-$ git clone git@github.com:nenadalm/hours-counter.git /opt/hours-counter
-$ cd /opt/hours-counter
-$ composer install --no-dev
-$ ln -s /opt/hours-counter/bin/run.php /usr/local/bin/hours-counter
+$ git clone git@github.com:nenadalm/hours-counter.git
+$ cd ./hours-counter
 ```
 
-Tips
-====
+## GraalVM (recommended)
+
+This option is recommended as the program is fastest.
+
+GraalVM can be downloaded [here](https://github.com/oracle/graal/releases).
+
+Following script expects graalvm to be extracted in `/opt/graalvm-ce-1.0.0-rc3`:
+
+```
+$ lein uberjar
+$ (cd target && PATH="/opt/graalvm-ce-1.0.0-rc3/bin:$PATH" native-image -H:+ReportUnsupportedElementsAtRuntime -jar ./hours-counter-0.0.0-standalone.jar)
+$ cp ./target/hours-counter-0.0.0-standalone /usr/local/bin/hours-counter
+```
+
+## NodeJS
+
+```
+$ lein cljsbuild once min
+$ cp target/app.js /usr/local/bin/hours-counter
+$ chmod +x /usr/local/bin/hours-counter
+```
+
+## JVM
+
+```
+$ lein uberjar
+$ cp ./target/hours-counter-0.0.0-standalone.jar /usr/local/bin/hours-counter.jar
+$ cat > /usr/local/bin/hours-counter <<'EOF'
+#!/usr/bin/env sh
+java -jar /usr/local/bin/hours-counter.jar "$@"
+EOF
+$ chmod +x /usr/local/bin/hours-counter
+```
+
+## Tips
+
 
 * if you want to have monthly reports, you can create bash aliases or some scripts which will open current file for current month or create one if it doesn't exists yet
 

@@ -1,26 +1,7 @@
-sudo: false
-
-language: php
-
-php:
-    - 7.1
-
-addons:
-    apt:
-        packages:
-            - graphviz
-
-before_script:
-    composer install
+language: clojure
 
 script:
-    - vendor/bin/phpunit
-    - vendor/bin/phpmd src/,tests/ text phpmd.xml
-    - vendor/bin/php-cs-fixer fix src/ --diff
-    - vendor/bin/php-cs-fixer fix tests/ --diff
-    - vendor/bin/php-cs-fixer fix bin/ --diff
-    - vendor/bin/phpda analyze phpda.yml
-
-after_success:
-    - bin/deploy-analysis
+  - 'lein cljfmt check'
+  - 'lein test'
+  - 'lein doo node test once'
 

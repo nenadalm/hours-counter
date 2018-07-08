@@ -1,5 +1,4 @@
-/resources/public/*
-!/resources/public/index.html
-
-/vendor/
-
+/.lein-failures
+/.nrepl-port
+/target
+/out

@@ -26,5 +26,5 @@
 (defn format [t]
   (let [h (:hour t)
         m (:minute t)]
-    (str h ":" (when (< m 9) "0") m " (" (format-float (float (+ h (/ m 60)))) ")")))
+    (str h ":" (when (< m 10) "0") m " (" (format-float (float (+ h (/ m 60)))) ")")))
 

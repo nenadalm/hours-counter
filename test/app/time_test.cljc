@@ -33,4 +33,6 @@
   (is (= "28:33 (28.5500)"
          (t/format {:hour 28 :minute 33})))
   (is (= "8:05 (8.0833)"
-         (t/format {:hour 8 :minute 5}))))
+         (t/format {:hour 8 :minute 5})))
+  (is (= "0:09 (0.1500)"
+         (t/format {:hour 0 :minute 9}))))

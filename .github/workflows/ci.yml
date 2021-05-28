@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@3.2
+        with:
+          cli: 1.10.1.727
+      - run: 'make target/test.js'
+      - run: 'clojure -M:cljfmt check'
+      - run: 'clojure -M:clj-kondo'
+      - run: 'clojure -M:test'
+      - run: 'node ./target/test.js'

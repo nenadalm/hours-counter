@@ -1,9 +1,0 @@
-language: clojure
-
-script:
-  - 'make target/test.js'
-
-  - 'clojure -M:cljfmt check'
-  - 'clojure -M:clj-kondo'
-  - 'clojure -M:test'
-  - 'node ./target/test.js'

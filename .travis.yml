@@ -3,5 +3,4 @@ language: clojure
 script:
   - 'lein cljfmt check'
   - 'lein test'
-  - 'lein doo node test once'
-
+  - 'lein cljsbuild once test && node ./target/test.js'

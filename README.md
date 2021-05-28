@@ -86,12 +86,10 @@ This option is recommended as the program is fastest.
 
 GraalVM can be downloaded [here](https://github.com/oracle/graal/releases).
 
-Following script expects graalvm to be extracted in `/opt/graalvm-ce-1.0.0-rc3`:
-
 ```
 $ lein uberjar
-$ (cd target && PATH="/opt/graalvm-ce-1.0.0-rc3/bin:$PATH" native-image -H:+ReportUnsupportedElementsAtRuntime -jar ./hours-counter-0.0.0-standalone.jar)
-$ cp ./target/hours-counter-0.0.0-standalone /usr/local/bin/hours-counter
+$ "${GRAALVM_HOME}/bin/native-image" -jar ./target/hours-counter-0.0.0-standalone.jar ./target/hours-counter
+$ cp ./target/hours-counter /usr/local/bin/hours-counter
 ```
 
 ### NodeJS

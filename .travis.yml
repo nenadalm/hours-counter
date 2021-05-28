@@ -3,4 +3,6 @@ language: clojure
 script:
   - 'lein cljfmt check'
   - 'lein test'
-  - 'lein cljsbuild once test && node ./target/test.js'
+
+  - 'make target/test.js'
+  - 'node ./target/test.js'

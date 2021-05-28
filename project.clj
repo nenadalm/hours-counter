@@ -7,19 +7,7 @@
   :profiles {:dev {:dependencies [[pjstadig/humane-test-output "0.11.0"]]
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
-                   :plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
-                             [lein-cljsbuild "1.1.8"]]}
+                   :plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]]}
              :uberjar {:aot :all}}
   :main app.core
-  :cljsbuild {:builds [{:id "min"
-                        :source-paths ["src"]
-                        :compiler {:main app.core
-                                   :target :nodejs
-                                   :output-to "target/app.js"
-                                   :optimizations :advanced}}
-                       {:id "test"
-                        :source-paths ["src" "test"]
-                        :compiler {:main app.run-all
-                                   :target :nodejs
-                                   :output-to "target/test.js"}}]}
   :aliases {"cljfmt" ["update-in" ":plugins" "conj" "[lein-cljfmt \"0.7.0\"]" "--" "cljfmt"]})

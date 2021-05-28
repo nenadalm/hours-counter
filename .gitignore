@@ -1,4 +1,4 @@
 /.lein-failures
 /.nrepl-port
 /target
-/out
+/.cljs_node_repl/

@@ -9,7 +9,7 @@ target/hours-counter.jar: ${SOURCES}
 target/hours-counter: target/hours-counter.jar
 	${NATIVE_IMAGE_BIN} -jar ./target/hours-counter.jar ./target/hours-counter
 
-target/app.js: ${SOURCES}
+target/hours-counter.js: ${SOURCES}
 	clojure -M:build-js-app
 
 target/test.js: ${SOURCES}

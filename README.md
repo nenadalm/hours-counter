@@ -92,8 +92,8 @@ $ cp ./target/hours-counter /usr/local/bin/hours-counter
 ### NodeJS
 
 ```
-$ make target/app.js
-$ cp target/app.js /usr/local/bin/hours-counter
+$ make target/hours-counter.js
+$ cp target/hours-counter.js /usr/local/bin/hours-counter
 $ chmod +x /usr/local/bin/hours-counter
 ```
 

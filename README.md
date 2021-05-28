@@ -87,7 +87,6 @@ This option is recommended as the program is fastest.
 GraalVM can be downloaded [here](https://github.com/oracle/graal/releases).
 
 ```
-$ lein uberjar
 $ make target/hours-counter
 $ cp ./target/hours-counter /usr/local/bin/hours-counter
 ```
@@ -103,8 +102,8 @@ $ chmod +x /usr/local/bin/hours-counter
 ### JVM
 
 ```
-$ make target/hours-counter-0.0.0-standalone.jar
-$ cp ./target/hours-counter-0.0.0-standalone.jar /usr/local/bin/hours-counter.jar
+$ make target/hours-counter.jar
+$ cp ./target/hours-counter.jar /usr/local/bin/hours-counter.jar
 $ cat > /usr/local/bin/hours-counter <<'EOF'
 #!/usr/bin/env sh
 java -jar /usr/local/bin/hours-counter.jar "$@"

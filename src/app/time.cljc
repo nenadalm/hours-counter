@@ -1,4 +1,7 @@
-(ns app.time)
+(ns app.time
+  (:refer-clojure :exclude [format])
+  (:require
+   [clojure.string]))
 
 (defn sub [t1 t2]
   (let [h (- (:hour t1) (:hour t2))

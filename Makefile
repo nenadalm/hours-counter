@@ -1,24 +1,25 @@
 NATIVE_IMAGE_BIN := $(realpath ${GRAALVM_HOME}/bin/native-image)
-SOURCES := $(shell find src/ -type f)
+SOURCES := $(shell find deps.edn src/ test/ -type f)
 
 .DEFAULT_GOAL := target/hours-counter
 
-target/hours-counter-0.0.0-standalone.jar: ${SOURCES}
-	lein uberjar
+target/hours-counter.jar: ${SOURCES}
+	clojure -X:uberjar
 
-target/hours-counter: target/hours-counter-0.0.0-standalone.jar
-	${NATIVE_IMAGE_BIN} -jar ./target/hours-counter-0.0.0-standalone.jar ./target/hours-counter
+target/hours-counter: target/hours-counter.jar
+	${NATIVE_IMAGE_BIN} -jar ./target/hours-counter.jar ./target/hours-counter
 
 target/app.js: ${SOURCES}
-	lein run -m cljs.main --optimizations advanced --target node --output-to target/app.js --compile app.core
+	clojure -M:build-js-app
 
 target/test.js: ${SOURCES}
-	lein run -m cljs.main --target node --output-to target/test.js --compile app.run-all
+	clojure -M:build-js-test
 
 .PHONY: test
 test: target/test.js
-	lein cljfmt check
-	lein test
+	clojure -M:cljfmt check
+	clojure -M:clj-kondo
+	clojure -M:test
 	node ./target/test.js
 
 .PHONY: install
@@ -31,4 +32,4 @@ uninstall:
 
 .PHONY: clean
 clean:
-	lein clean
+	rm -rf target

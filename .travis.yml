@@ -1,8 +1,9 @@
 language: clojure
 
 script:
-  - 'lein cljfmt check'
-  - 'lein test'
-
   - 'make target/test.js'
+
+  - 'clojure -M:cljfmt check'
+  - 'clojure -M:clj-kondo'
+  - 'clojure -M:test'
   - 'node ./target/test.js'

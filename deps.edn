@@ -6,10 +6,17 @@
  :aliases {:test {:extra-paths ["test"]
                   :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.829"}}
                   :main-opts ["-m" "kaocha.runner"]}
-           :build-js-app {:main-opts ["-m" "cljs.main" "--optimizations" "advanced" "--target" "node" "--output-to" "target/hours-counter.js" "--compile" "app.core"]}
+           :build-js-app {:main-opts ["-m" "cljs.main"
+                                      "--optimizations" "advanced"
+                                      "--target" "node"
+                                      "--output-to" "target/hours-counter.js"
+                                      "--compile" "app.core"]}
            :build-js-test {:extra-deps {pjstadig/humane-test-output {:mvn/version "0.11.0"}}
                            :extra-paths ["test"]
-                           :main-opts ["-m" "cljs.main" "--target" "node" "--output-to" "target/test.js" "--compile" "app.run-all"]}
+                           :main-opts ["-m" "cljs.main"
+                                       "--target" "node"
+                                       "--output-to" "target/test.js"
+                                       "--compile" "app.run-all"]}
            :uberjar {:extra-deps {com.github.seancorfield/depstar {:mvn/version "2.0.193"}}
                      :exec-fn hf.depstar/uberjar
                      :exec-args {:jar "target/hours-counter.jar"

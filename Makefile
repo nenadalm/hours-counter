@@ -1,5 +1,6 @@
 NATIVE_IMAGE_BIN := $(realpath ${GRAALVM_HOME}/bin/native-image)
 SOURCES := $(shell find deps.edn src/ test/ -type f)
+APP_VERSION ?= unknown
 
 .DEFAULT_GOAL := target/hours-counter
 
@@ -10,7 +11,12 @@ target/hours-counter: target/hours-counter.jar
 	${NATIVE_IMAGE_BIN} -jar ./target/hours-counter.jar ./target/hours-counter
 
 target/hours-counter.js: ${SOURCES}
-	clojure -M:build-js-app
+	clojure -M -m cljs.main \
+		--optimizations advanced \
+		--target node \
+		--output-to target/hours-counter.js \
+		--compile-opts '{:closure-defines {app.config/VERSION "${APP_VERSION}"}}' \
+		--compile app.core
 
 target/test.js: ${SOURCES}
 	clojure -M:build-js-test

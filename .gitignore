@@ -3,3 +3,4 @@
 /.cljs_node_repl/
 /.cpcache/
 /.clj-kondo/.cache/
+/resources/META-INF/app/

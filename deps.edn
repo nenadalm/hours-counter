@@ -4,7 +4,7 @@
         instaparse/instaparse {:mvn/version "1.4.10"}
         cljsjs/nodejs-externs {:mvn/version "1.0.4-1"}}
  :aliases {:test {:extra-paths ["test"]
-                  :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.829"}}
+                  :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}}
                   :main-opts ["-m" "kaocha.runner"]}
            :build-js-app {:main-opts ["-m" "cljs.main"
                                       "--optimizations" "advanced"
@@ -17,7 +17,7 @@
                                        "--target" "node"
                                        "--output-to" "target/test.js"
                                        "--compile" "app.run-all"]}
-           :uberjar {:extra-deps {com.github.seancorfield/depstar {:mvn/version "2.0.193"}}
+           :uberjar {:extra-deps {com.github.seancorfield/depstar {:mvn/version "2.0.216"}}
                      :exec-fn hf.depstar/uberjar
                      :exec-args {:jar "target/hours-counter.jar"
                                  :aot true
@@ -27,5 +27,5 @@
                                  :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}}
            :cljfmt {:extra-deps {cljfmt/cljfmt {:mvn/version "0.7.0"}}
                     :main-opts ["-m" "cljfmt.main"]}
-           :clj-kondo {:extra-deps {clj-kondo/clj-kondo {:mvn/version "2021.01.20"}}
+           :clj-kondo {:extra-deps {clj-kondo/clj-kondo {:mvn/version "2021.04.23"}}
                        :main-opts ["-m" "clj-kondo.main" "--lint" "src"]}}}

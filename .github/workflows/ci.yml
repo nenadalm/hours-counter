@@ -57,13 +57,15 @@ jobs:
           mkdir -p resources/META-INF/app
           echo "version=${{ steps.create-tag.outputs.tag }}" > resources/META-INF/app/config.properties
       - name: Build artifacts
-        run: APP_VERSION=${{ steps.create-tag.outputs.tag }} make target/hours-counter target/hours-counter.js target/hours-counter.jar
+        run: |
+          APP_VERSION=${{ steps.create-tag.outputs.tag }} make target/hours-counter target/hours-counter.js target/hours-counter.jar
+          mv target/hours-counter hours-counter-linux-amd64
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: '${{ steps.create-tag.outputs.tag }}'
           files: |
-            target/hours-counter
+            hours-counter-linux-amd64
             target/hours-counter.js
             target/hours-counter.jar
         env:
